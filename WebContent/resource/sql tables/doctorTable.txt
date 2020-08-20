@@ -1,0 +1,37 @@
+// create table
+create table doctor(
+doctorId int primary key auto_increment,
+name varchar(255) not null,
+email varchar(255) not null unique,
+password varchar(255) not null,
+gender varchar(255) not null,
+qual varchar(255) not null,
+dob varchar(255) not null,
+expertIn varchar(255),
+status boolean default 0
+);
+
+//insert some data
+insert into doctor(name,email,password,gender,qual,dob,expertIn,status)
+values("Shubham","shub@gmail.com","pass","Male","BscIT","1998-08-23","Coding",1);
+
+insert into doctor(name,email,password,gender,qual,dob,expertIn,status)
+values("Vishal","vishal@gmail.com","pass","Male","BCOM","1998-08-23","Accounts",1);
+
+insert into doctor(name,email,password,gender,qual,dob,expertIn,status)
+values("Shrikant","shri@gmail.com","pass","Male","Diploma","1998-08-23","Cube solving",1);
+
+insert into doctor(name,email,password,gender,qual,dob,expertIn,status)
+values("Gaurav","gaurav@gmail.com","pass","Male","Degree","1998-08-23","Drawing",1);
+
+insert into doctor(name,email,password,gender,qual,dob,expertIn,status)
+values("Sandesh","sandy@gmail.com","pass","Male","Degree","1998-08-23","Reading",1);
+
+//read the data
+select * from doctor;
+
+//delete the data
+delete from doctor where doctorId=(some_id);
+
+//delete the table
+drop table doctor;
