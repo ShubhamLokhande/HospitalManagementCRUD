@@ -65,8 +65,7 @@
 			    	<td><%=doc.getExpertIn() %></td>
 			    	<%if(doc.isStatus()){ %>
 			    	<td>
-			    		<button class="btn btn-warning" type="button" id="updateDoc" name="updateDoc" 
-			    			value="<%=doc.getDoctorId()%>"
+			    		<button class="btn btn-warning" type="button" id="updateDoc" name="updateDoc" value="<%=doc.getDoctorId()%>"
 			    			data-toggle="modal" data-target="#doctorModel">Edit</button>
 			    		<button class="btn btn-danger" type="button" id="deleteDoc" name="deleteDoc" 
 			    			value="<%=doc.getEmail()%>">Delete</button>

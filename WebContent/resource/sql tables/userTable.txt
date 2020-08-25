@@ -1,0 +1,38 @@
+// create table
+create table user(
+userId int primary key auto_increment,
+name varchar(255) not null,
+email varchar(255) not null unique,
+password varchar(255) not null,
+gender varchar(255) not null,
+qual varchar(255) not null,
+dob varchar(255) not null,
+mobileNo varchar(10) not null,
+address varchar(255),
+status boolean default 0
+);
+
+//insert some data
+insert into user(name,email,password,gender,qual,dob,mobileNo,address,status)
+values("Rahul","rahul@gmail.com","pass","Male","BscIT","1998-08-23","9999988888","Airoli",1);
+
+insert into user(name,email,password,gender,qual,dob,mobileNo,address,status)
+values("Suresh","suresh@gmail.com","pass","Male","BCOM","1998-08-23","9898989898","Thane",1);
+
+insert into user(name,email,password,gender,qual,dob,mobileNo,address,status)
+values("Hema","hema@gmail.com","pass","Female","Diploma","1998-08-23","9999988888","Kurla",1);
+
+insert into user(name,email,password,gender,qual,dob,mobileNo,address,status)
+values("Tejas","tejas@gmail.com","pass","Male","Degree","1998-08-23","9999988888","Ghansoli",1);
+
+insert into user(name,email,password,gender,qual,dob,mobileNo,address,status)
+values("Vicky","vicky@gmail.com","pass","Male","Degree","1998-08-23","8888555578","KoparKhairne",1);
+
+//read the data
+select * from user;
+
+//delete the data
+delete from User where userId=(some_id);
+
+//delete the table
+drop table user;
