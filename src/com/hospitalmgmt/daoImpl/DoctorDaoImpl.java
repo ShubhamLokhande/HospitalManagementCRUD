@@ -94,30 +94,21 @@ public class DoctorDaoImpl implements DoctorDao {
 	
 	@Override
 	public boolean deleteDoctor(String email) {
-		String sql = "update doctor set status=? where email=?";
-		
-		try {
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setBoolean(1, false);
-			ps.setString(2, email);
-			
-			int check = ps.executeUpdate();
-			if(check > 0) {
-				return true;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
+		return changeDoctorStatus(email, false);
 	}
 
 	@Override
 	public boolean activeDoctor(String email) {
+		return changeDoctorStatus(email, true);
+	}
+
+	private boolean changeDoctorStatus(String email, boolean status) {
+		// used for deleteDoctor and activeDoctor
 		String sql = "update doctor set status=? where email=?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setBoolean(1, true);
+			ps.setBoolean(1, status);
 			ps.setString(2, email);
 			
 			int check = ps.executeUpdate();
@@ -129,7 +120,7 @@ public class DoctorDaoImpl implements DoctorDao {
 		}
 		return false;
 	}
-
+	
 	@Override
 	public List<Doctor> getAllDoctors(boolean status) {
 		String sql = "select * from doctor where status=?";
