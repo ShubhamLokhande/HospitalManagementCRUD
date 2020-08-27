@@ -6,26 +6,27 @@ userId int not null,
 date varchar(10) not null,
 timeSlot varchar(2) not null,
 description varchar(255) not null,
+action varchar(255) not null,
 status boolean default 1,
 foreign key (doctorId) references doctor(doctorId),
 foreign key (userId) references user(userId)
 );
 
 //insert some data
-insert into appointment(doctorId,userId,date,timeSlot,description,status)
-values(1,1,"2020-08-30","9","Headache and Fever",1);
+insert into appointment(doctorId,userId,date,timeSlot,description,action,status)
+values(1,1,"2020-08-30","9","Headache and Fever","PENDING",1);
 
-insert into appointment(doctorId,userId,date,timeSlot,description,status)
-values(1,2,"2020-08-30","10","Cough",1);
+insert into appointment(doctorId,userId,date,timeSlot,description,action,status)
+values(1,2,"2020-08-30","10","Cough","PENDING",1);
 
-insert into appointment(doctorId,userId,date,timeSlot,description,status)
-values(1,3,"2020-08-30","12","Fever and heavy fever",1);
+insert into appointment(doctorId,userId,date,timeSlot,description,action,status)
+values(1,3,"2020-08-30","12","Fever and heavy fever","PENDING",1);
 
-insert into appointment(doctorId,userId,date,timeSlot,description,status)
-values(2,4,"2020-08-30","3","Headache, Stomach pain",1);
+insert into appointment(doctorId,userId,date,timeSlot,description,action,status)
+values(2,4,"2020-08-30","3","Headache, Stomach pain","PENDING",1);
 
-insert into appointment(doctorId,userId,date,timeSlot,description,status)
-values(2,5,"2020-08-30","4","Back pain",1);
+insert into appointment(doctorId,userId,date,timeSlot,description,action,status)
+values(2,5,"2020-08-30","4","Back pain","PENDING",1);
 
 //read the data
 select * from user;

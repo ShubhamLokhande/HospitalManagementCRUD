@@ -16,6 +16,9 @@
 			<li class="nav-item">
 				<a class="nav-link" href="UserServlet?action=getAllUser">User</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="AppointmentServlet?action=getAllAppointment">Appointment</a>
+			</li>
 <!-- 			for future reference -->
 
 <!--       		<li class="nav-item"> -->

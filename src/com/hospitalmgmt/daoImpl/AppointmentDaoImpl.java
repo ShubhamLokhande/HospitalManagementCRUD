@@ -28,7 +28,7 @@ public class AppointmentDaoImpl implements AppointmentDao{
 			ps.setString(3, appoint.getDate().toString());
 			ps.setString(4, appoint.getTimeSlot());
 			ps.setString(5, appoint.getDescription());
-			ps.setString(6, appoint.getAction().toString());
+			ps.setString(6, Action.PENDING.toString());
 			ps.setBoolean(7, true);
 			
 			int check = ps.executeUpdate();
@@ -52,7 +52,7 @@ public class AppointmentDaoImpl implements AppointmentDao{
 			ps.setString(3, appoint.getDate().toString());
 			ps.setString(4, appoint.getTimeSlot());
 			ps.setString(5, appoint.getDescription());
-			ps.setInt(7, appoint.getAppointId());
+			ps.setInt(6, appoint.getAppointId());
 			
 			int check = ps.executeUpdate();
 			if(check > 0) {
@@ -117,12 +117,13 @@ public class AppointmentDaoImpl implements AppointmentDao{
 		}
 		return appoint;
 	}
-
+	
+	//new method only in appointment
 	@Override
 	public List<Appointment> getAppointmentsByDoctorId(int doctorId, boolean status) {
 		return getAppointmentsByDynamicEntity(status, doctorId, "doctor");
 	}
-
+	//new method only in appointment
 	@Override
 	public List<Appointment> getAppointmentsByUserId(int userId, boolean status) {
 		return getAppointmentsByDynamicEntity(status, userId, "user");
@@ -141,17 +142,20 @@ public class AppointmentDaoImpl implements AppointmentDao{
 		} else if(type.equals("doctor")) {
 			sql = "select * from appointment where userId=? and status=?";
 		} else if(type.equals("all")){
-			sql = "select * from appointment status=?";
+			sql = "select * from appointment where status=?";
 		} else {
 			System.out.println("Something goes wrong....\nInvalid type specified in the method");
 			return null;
 		}
-		
 		List<Appointment> appointList = new ArrayList<>();
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setBoolean(2, status);
+			if(type.equals("all")) {
+				ps.setBoolean(1, status);
+			} else {
+				ps.setInt(1, id);
+				ps.setBoolean(2, status);
+			}
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				Appointment appoint = new Appointment();
@@ -162,7 +166,7 @@ public class AppointmentDaoImpl implements AppointmentDao{
 				appoint.setTimeSlot(rs.getString(5));
 				appoint.setDescription(rs.getString(6));
 				appoint.setAction(Action.valueOf(rs.getString(7)));
-				
+				appoint.setStatus(rs.getBoolean(8));
 				appointList.add(appoint);
 			}
 			return appointList;
