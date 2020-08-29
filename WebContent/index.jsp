@@ -11,10 +11,15 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	
+	<jsp:include page="loginModel.jsp"></jsp:include>
 	
 	<!-- include bootstrap and jquery files -->
 	<script src="resource/bootstrap/jquery.3.5.1.js"></script>
 	<script type="text/javascript" src="resource/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			login.check();
+		})
+	</script>
 </body>
 </html>

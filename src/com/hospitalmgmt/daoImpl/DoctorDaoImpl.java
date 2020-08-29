@@ -176,25 +176,25 @@ public class DoctorDaoImpl implements DoctorDao {
 			e.printStackTrace();
 		}
 		return doctor;
-	}
+	}	**/
 	
 	@Override
 	public Doctor getDoctorLogin(Doctor doctor) {
-		String sql = "select (email,password) from doctor where email=?";
-		Doctor stud = new Doctor();
+		String sql = "select email,password from doctor where email=?";
+		Doctor doc = new Doctor();
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, doctor.getEmail());
 			
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				stud.setName(rs.getString(1));
-				stud.setEmail(rs.getString(2));
+				doc.setEmail(rs.getString(1));
+				doc.setPassword(rs.getString(2));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return stud;
-	}	**/
+		return doc;
+	}
 
 }

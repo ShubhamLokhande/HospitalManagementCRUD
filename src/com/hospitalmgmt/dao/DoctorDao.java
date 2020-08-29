@@ -21,7 +21,7 @@ public interface DoctorDao {
 	//for future references
 	
 //	Doctor getDoctorByEmail(Doctor doctor);
-//	
-//	Doctor getDoctorLogin(Doctor doctor);
+	
+	Doctor getDoctorLogin(Doctor doctor);
 	
 }
