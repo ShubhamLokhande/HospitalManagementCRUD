@@ -12,6 +12,7 @@ import com.hospitalmgmt.dao.DoctorDao;
 import com.hospitalmgmt.daoImpl.DoctorDaoImpl;
 import com.hospitalmgmt.daoImpl.UserDaoImpl;
 import com.hospitalmgmt.pojo.Doctor;
+import com.hospitalmgmt.pojo.User;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -45,7 +46,6 @@ public class LoginServlet extends HttpServlet {
 				Doctor doctor = new Doctor();
 				doctor.setEmail(email);
 				doctor.setPassword(password);
-				
 				Doctor newDoc = doctorDaoImpl.getDoctorLogin(doctor);
 
 				if(newDoc!=null && 	newDoc.getEmail() != null && newDoc.getPassword() != null &&
@@ -56,10 +56,33 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("loggedEmail", email);
 					response.sendRedirect("index.jsp");
 				} else {
-					System.out.println("not success");
+					System.out.println("not success : Doctor Login");
+				}
+			} else if(loginAs != null && loginAs.equals("user")) {
+				User user = new User();
+				user.setEmail(email);
+				user.setPassword(password);
+				User newUser = userDaoImpl.getUserLogin(user);
+
+				if(newUser!=null && newUser.getEmail() != null && newUser.getPassword() != null &&
+									newUser.getEmail().equals(user.getEmail()) &&
+									newUser.getPassword().equals(user.getPassword())) {
+					
+					session.setAttribute("loggedAs", loginAs);
+					session.setAttribute("loggedEmail", email);
+					response.sendRedirect("index.jsp");
+				} else {
+					System.out.println("not success : User Login");
+				}
+			} else if(loginAs != null && loginAs.equals("admin")) {
+				if(email.equalsIgnoreCase("admin@gmail.com") && password.equalsIgnoreCase("admin")) {
+					session.setAttribute("loggedAs", loginAs);
+					session.setAttribute("loggedEmail", email);
+					response.sendRedirect("index.jsp");
+				} else {
+					System.out.println("not success : Admin Login");
 				}
 			}
 		}
 	}
-
 }

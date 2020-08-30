@@ -21,7 +21,7 @@ public interface UserDao {
 	//for future references
 	
 //	User getUserByEmail(User user);
-//	
-//	User getUserLogin(User user);
+	
+	User getUserLogin(User user);
 	
 }

@@ -190,25 +190,25 @@ public class UserDaoImpl implements UserDao{
 			e.printStackTrace();
 		}
 		return user;
-	}
+	}	**/
 	
 	@Override
 	public User getUserLogin(User user) {
-		String sql = "select (email,password) from doctor where email=?";
-		User user = new User();
+		String sql = "select email,password from user where email=?";
+		User newUser = new User();
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, user.getEmail());
 			
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				user.setName(rs.getString(1));
-				user.setEmail(rs.getString(2));
+				newUser.setEmail(rs.getString(1));
+				newUser.setPassword(rs.getString(2));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user;
-	}	**/
+		return newUser;
+	}
 
 }

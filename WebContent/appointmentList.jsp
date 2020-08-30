@@ -84,5 +84,10 @@
 	<script src="resource/bootstrap/jquery.3.5.1.js"></script>
 	<script type="text/javascript" src="resource/bootstrap/bootstrap.min.js"></script>
 	<script type="text/javascript" src="resource/js/appointmentList.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			login.check();
+		});
+	</script>
 </body>
 </html>

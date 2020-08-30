@@ -14,14 +14,16 @@ var login = login || (function(){
 				$('#loginHeader').show();
 			} else {
 				if(loggedAs != "null" && loggedAs == "doctor"){
+					$('#loginHeader').hide();
 					$('#logoutHeader').show();
 				} else if(loggedAs != "null" && loggedAs == "user"){
+					$('#loginHeader').hide();
 					$('#logoutHeader').show();
 				} else if(loggedAs != "null" && loggedAs == "admin"){
 					$('#doctorHeader').show();
 					$('#userHeader').show();
 					$('#appointmentHeader').show();
-					$('#loginHeader').show();
+					$('#loginHeader').hide();
 					$('#logoutHeader').show();
 				}
 			}	
