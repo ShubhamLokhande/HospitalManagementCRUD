@@ -11,7 +11,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<jsp:include page="loginModel.jsp"></jsp:include>
+	<jsp:include page="loginModal.jsp"></jsp:include>
 	
 	<!-- include bootstrap and jquery files -->
 	<script src="resource/bootstrap/jquery.3.5.1.js"></script>

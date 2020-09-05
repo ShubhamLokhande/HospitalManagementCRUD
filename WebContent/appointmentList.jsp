@@ -14,7 +14,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<jsp:include page="appointmentModel.jsp"></jsp:include>
+	<jsp:include page="appointmentModal.jsp"></jsp:include>
 	<%
 		boolean appointActive = (session.getAttribute("appointActive") != null && 
 					(boolean)session.getAttribute("appointActive") == true ) ? true : false;
@@ -25,7 +25,7 @@
 			<div class="col-sm-6 text-right">
 				<%if(!appointActive){ %>
 					<button class="btn btn-success" type="button" class="" id="newAppoint" 
-						data-toggle="modal" data-target="#appointmentModel">Add Appointment</button>
+						data-toggle="modal" data-target="#appointmentModal">Add Appointment</button>
 					<a class="btn btn-primary" href="AppointmentServlet?action=getAllAppointmentByFalse">View Deleted Appointment</a>
 				<%} else {%>
 					<a class="btn btn-primary" href="AppointmentServlet?action=getAllAppointment">View Active Appointment</a>
@@ -64,7 +64,7 @@
 			    	<%if(appoint.isStatus()){ %>
 			    	<td>
 			    		<button class="btn btn-warning" type="button" id="updateAppointment" name="updateAppointment" 
-			    			value="<%=appoint.getAppointId()%>" data-toggle="modal" data-target="#appointmentModel">Edit</button>
+			    			value="<%=appoint.getAppointId()%>" data-toggle="modal" data-target="#appointmentModal">Edit</button>
 			    		<button class="btn btn-danger" type="button" id="deleteAppointment" name="deleteAppointment" 
 			    			value="<%=appoint.getAppointId()%>">Delete</button>
 			    	</td>

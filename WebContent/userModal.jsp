@@ -1,23 +1,23 @@
-<div class="modal fade" id="doctorModel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">New Doctor Form</h5>
+				<h5 class="modal-title">New User Form</h5>
 			</div>
-			<form class="mx-5" id="DoctorForm" action="DoctorServlet" method="post">
+			<form class="mx-5" id="UserForm" action="UserServlet" method="post">
 				<div class="modal-body">
-					<input type="hidden" name="action" value="inputDoctor">
-					<input type="hidden" name="inputDoctorId" id="inputDoctorId">
+					<input type="hidden" name="action" value="inputUser">
+					<input type="hidden" name="inputUserId" id="inputUserId">
 					<div class="form-group row">
 						<label for="name" class="col-sm-3 col-form-label">Name</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="inputName" id="inputName" placeholder="Enter Doctor Name">
+							<input type="text" class="form-control" name="inputName" id="inputName" placeholder="Enter User Name">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="email" class="col-sm-3 col-form-label">Email</label>
 						<div class="col-sm-9">
-							<input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Enter Doctor Email">
+							<input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Enter User Email">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -54,9 +54,15 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="expertIn" class="col-sm-3 col-form-label">Specialization</label>
+						<label for="mobileNo" class="col-sm-3 col-form-label">Mobile Number</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="inputExpertIn" id="inputExpertIn" placeholder="Enter Doctor Specialization">
+							<input type="text" class="form-control" name="inputMobileNo" id="inputMobileNo" placeholder="Enter Mobile Number">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="address" class="col-sm-3 col-form-label">Address</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="Enter Address">
 						</div>
 					</div>
 				</div>

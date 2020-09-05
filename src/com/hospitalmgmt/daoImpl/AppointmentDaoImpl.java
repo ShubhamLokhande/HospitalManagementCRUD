@@ -138,9 +138,9 @@ public class AppointmentDaoImpl implements AppointmentDao{
 		//used for getAppointmentsByUserId and getAppointmentsByDoctorId
 		String sql = null;
 		if(type.equals("user")) {
-			sql = "select * from appointment where doctorId=? and status=?";
-		} else if(type.equals("doctor")) {
 			sql = "select * from appointment where userId=? and status=?";
+		} else if(type.equals("doctor")) {
+			sql = "select * from appointment where doctorId=? and status=?";
 		} else if(type.equals("all")){
 			sql = "select * from appointment where status=?";
 		} else {

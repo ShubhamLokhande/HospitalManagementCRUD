@@ -14,7 +14,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<jsp:include page="doctorModel.jsp"></jsp:include>
+	<jsp:include page="doctorModal.jsp"></jsp:include>
 	<%
 		boolean doctorActive = (session.getAttribute("doctorActive") != null && 
 					(boolean)session.getAttribute("doctorActive") == true ) ? true : false;
@@ -25,7 +25,7 @@
 			<div class="col-sm-6 text-right">
 				<%if(!doctorActive){ %>
 					<button class="btn btn-success" type="button" class="" id="newDoc" 
-						data-toggle="modal" data-target="#doctorModel">Add Doctor</button>
+						data-toggle="modal" data-target="#doctorModal">Add Doctor</button>
 					<a class="btn btn-primary" href="DoctorServlet?action=getAllDoctorByFalse">View Deleted Doctor</a>
 				<%} else {%>
 					<a class="btn btn-primary" href="DoctorServlet?action=getAllDoctor">View Active Doctor</a>
@@ -66,7 +66,7 @@
 			    	<%if(doc.isStatus()){ %>
 			    	<td>
 			    		<button class="btn btn-warning" type="button" id="updateDoc" name="updateDoc" value="<%=doc.getDoctorId()%>"
-			    			data-toggle="modal" data-target="#doctorModel">Edit</button>
+			    			data-toggle="modal" data-target="#doctorModal">Edit</button>
 			    		<button class="btn btn-danger" type="button" id="deleteDoc" name="deleteDoc" 
 			    			value="<%=doc.getEmail()%>">Delete</button>
 			    	</td>

@@ -14,7 +14,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<jsp:include page="userModel.jsp"></jsp:include>
+	<jsp:include page="userModal.jsp"></jsp:include>
 	<%
 		boolean userActive = (session.getAttribute("userActive") != null && 
 					(boolean)session.getAttribute("userActive") == true ) ? true : false;
@@ -25,7 +25,7 @@
 			<div class="col-sm-6 text-right">
 				<%if(!userActive){ %>
 					<button class="btn btn-success" type="button" class="" id="newUser" 
-						data-toggle="modal" data-target="#userModel">Add User</button>
+						data-toggle="modal" data-target="#userModal">Add User</button>
 					<a class="btn btn-primary" href="UserServlet?action=getAllUserByFalse">View Deleted User</a>
 				<%} else {%>
 					<a class="btn btn-primary" href="UserServlet?action=getAllUser">View Active User</a>
@@ -69,7 +69,7 @@
 			    	<%if(user.isStatus()){ %>
 			    	<td>
 			    		<button class="btn btn-warning" type="button" id="updateUser" name="updateUser" value="<%=user.getUserId()%>"
-			    			data-toggle="modal" data-target="#userModel">Edit</button>
+			    			data-toggle="modal" data-target="#userModal">Edit</button>
 			    		<button class="btn btn-danger" type="button" id="deleteUser" name="deleteUser" 
 			    			value="<%=user.getEmail()%>">Delete</button>
 			    	</td>
