@@ -1,6 +1,7 @@
 package com.hospitalmgmt.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hospitalmgmt.pojo.User;
 
@@ -23,5 +24,7 @@ public interface UserDao {
 //	User getUserByEmail(User user);
 	
 	User getUserLogin(User user);
+
+	Map<Integer, String> getAllUsersNameAndId(boolean status);
 	
 }

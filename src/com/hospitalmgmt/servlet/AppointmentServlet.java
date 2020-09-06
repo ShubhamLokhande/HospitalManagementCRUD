@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,9 +17,8 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.hospitalmgmt.daoImpl.AppointmentDaoImpl;
 import com.hospitalmgmt.daoImpl.DoctorDaoImpl;
+import com.hospitalmgmt.daoImpl.UserDaoImpl;
 import com.hospitalmgmt.pojo.Appointment;
-import com.hospitalmgmt.pojo.Doctor;
-import com.hospitalmgmt.system.CustomEnum.Action;
 
 @WebServlet("/AppointmentServlet")
 public class AppointmentServlet extends HttpServlet {
@@ -26,15 +26,22 @@ public class AppointmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 7803064625846938032L;
 
 	AppointmentDaoImpl appointDaoImpl = new AppointmentDaoImpl();
+	DoctorDaoImpl docDaoImpl = new DoctorDaoImpl();
+	UserDaoImpl userDaoImpl = new UserDaoImpl();
 	
 	private Gson gson = new Gson();
 	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		HttpSession session = request.getSession();
 		if(action != null && action.equals("getAllAppointment")) {
 			List<Appointment> appointList = appointDaoImpl.getAllAppointments(true);
+			Map<Integer, String> allDocNameAndId = docDaoImpl.getAllDoctorsNameAndId(true);
+			Map<Integer, String> allUserNameAndId = userDaoImpl.getAllUsersNameAndId(true);
 			session.setAttribute("appointList", appointList);
+			session.setAttribute("docNameMap", allDocNameAndId);
+			session.setAttribute("userNameMap", allUserNameAndId);
 			session.setAttribute("appointActive", false);
 			response.sendRedirect("appointmentList.jsp");
 		} else if(action != null && action.equals("getAllAppointmentByFalse")) {
@@ -55,6 +62,7 @@ public class AppointmentServlet extends HttpServlet {
 		}
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		HttpSession session = request.getSession();

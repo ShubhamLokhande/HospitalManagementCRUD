@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.hospitalmgmt.config.DataBaseConnection;
 import com.hospitalmgmt.dao.UserDao;
@@ -211,4 +213,20 @@ public class UserDaoImpl implements UserDao{
 		return newUser;
 	}
 
+	@Override
+	public Map<Integer, String> getAllUsersNameAndId(boolean status) {
+		String sql = "select userId,name from user where status=?";
+		Map<Integer, String> userMap = new HashMap<>();
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setBoolean(1, status);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				userMap.put(rs.getInt(1), rs.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return userMap;
+	}
 }

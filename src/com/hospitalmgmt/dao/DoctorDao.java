@@ -1,6 +1,7 @@
 package com.hospitalmgmt.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hospitalmgmt.pojo.Doctor;
 
@@ -23,5 +24,7 @@ public interface DoctorDao {
 //	Doctor getDoctorByEmail(Doctor doctor);
 	
 	Doctor getDoctorLogin(Doctor doctor);
+	
+	Map<Integer, String> getAllDoctorsNameAndId(boolean status);
 	
 }

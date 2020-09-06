@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -11,13 +12,21 @@
 					<div class="form-group row">
 						<label for="inputDoctorId" class="col-sm-3 col-form-label">Doctor</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="inputDoctorId" id="inputDoctorId">
+							<select id="inputDoctorId" name="inputDoctorId" class="form-control">
+								<c:forEach items="${docNameMap}" var="docName">
+									<option value="${docName.key}">${docName.value}</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="inputUserId" class="col-sm-3 col-form-label">User</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="inputUserId" id="inputUserId">
+							<select id="inputUserId" name="inputUserId" class="form-control">
+								<c:forEach items="${userNameMap}" var="userName">
+									<option value="${userName.key}">${userName.value}</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 					<div class="form-group row">

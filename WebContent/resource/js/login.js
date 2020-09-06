@@ -7,6 +7,8 @@ var login = login || (function(){
 			$('#doctorHeader').hide();
 			$('#userHeader').hide();
 			$('#appointmentHeader').hide();
+			$('#rolesHeader').hide();
+			$('#featuresHeader').hide();
 			$('#loginHeader').hide();
 			$('#logoutHeader').hide();
 			
@@ -20,9 +22,8 @@ var login = login || (function(){
 					$('#loginHeader').hide();
 					$('#logoutHeader').show();
 				} else if(loggedAs != "null" && loggedAs == "admin"){
-					$('#doctorHeader').show();
-					$('#userHeader').show();
-					$('#appointmentHeader').show();
+					$('#rolesHeader').show();
+					$('#featuresHeader').show();
 					$('#loginHeader').hide();
 					$('#logoutHeader').show();
 				}

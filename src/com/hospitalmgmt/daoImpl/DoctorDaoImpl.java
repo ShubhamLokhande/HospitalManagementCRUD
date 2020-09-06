@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.hospitalmgmt.config.DataBaseConnection;
 import com.hospitalmgmt.dao.DoctorDao;
@@ -195,6 +197,23 @@ public class DoctorDaoImpl implements DoctorDao {
 			e.printStackTrace();
 		}
 		return doc;
+	}
+	
+	@Override
+	public Map<Integer, String> getAllDoctorsNameAndId(boolean status) {
+		String sql = "select doctorId,name from doctor where status=?";
+		Map<Integer, String> doctorMap = new HashMap<>();
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setBoolean(1, status);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				doctorMap.put(rs.getInt(1), rs.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return doctorMap;
 	}
 
 }

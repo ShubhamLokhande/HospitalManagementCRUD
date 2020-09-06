@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="com.hospitalmgmt.pojo.Doctor"%>
 <%@page import="com.hospitalmgmt.daoImpl.AppointmentDaoImpl"%>
 <%@page import="java.util.List"%>
 <%@page import="com.hospitalmgmt.pojo.Appointment"%>
@@ -37,9 +39,11 @@
 	<div class="container table-responsive">
 		<%
 			List<Appointment> appointList = (List<Appointment>)session.getAttribute("appointList");
+			Map<Integer, String> docNameMap = (Map<Integer, String>)session.getAttribute("docNameMap");
+			Map<Integer, String> userNameMap = (Map<Integer, String>)session.getAttribute("userNameMap");
 		%>
 		<table class="table">
-			<thead class="thead-light text-center">
+			<thead class="thead-light">
 				<tr>
 			    	<th scope="col">Id</th>
 			      	<th scope="col">Doctor Id</th>
@@ -55,8 +59,8 @@
 			    <%for(Appointment appoint : appointList){ %>
 			    <tr>
 			    	<td id="id" scope="row"><%=appoint.getAppointId() %></td>
-			    	<td><%=appoint.getDoctorId() %></td>
-			    	<td><%=appoint.getUserId() %></td>
+			    	<td><%=docNameMap.get(appoint.getDoctorId())%></td>
+			    	<td><%=userNameMap.get(appoint.getUserId()) %></td>
 			    	<td><%=appoint.getDate() %></td>
 			    	<td><%=appoint.getTimeSlot() %></td>
 			    	<td><%=appoint.getDescription() %></td>
